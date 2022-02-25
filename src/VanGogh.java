@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -49,6 +51,8 @@ public class VanGogh extends PApplet {
     PImage canvas;
     PImage paintbrushCursor;
     boolean initializeCanvas = true;
+    PImage[] array = new PImage[6];
+    int counter;
     
     /*
      * Write your code below
@@ -56,11 +60,19 @@ public class VanGogh extends PApplet {
     Brush brush;
     
     void initializePaintings() {
-        
+    	array[0] = loadImage("painterOnRoad.jpg"); 
+    	array[1] = loadImage("starryNight.jpg");
+    	array[2] = loadImage("strawHatPortrait.jpg");
+    	array[3] = loadImage("wheatField.jpg");
+    	array[4] = loadImage("BanaWall.jpeg");
+    	array[5] = loadImage("soup.jpeg");
+        counter = 0;
+        brush.setNewPainting(array[counter]);
     }
     
     void selectNextPainting() {
-        
+        counter = (counter+1)%array.length;
+        brush.setNewPainting(array[counter]);
     }
 
     @Override
